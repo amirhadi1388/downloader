@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Utility - Hyrule Magic - Details</title>
+<meta property="og:image" content="https://www.retrohackers.net/utilities/screenshots/200screenshot1.jpg">
+<meta property="og:title" content="Hyrule Magic">
+<meta property="og:description" content="Utility for The Legend of Zelda: A Link to the Past (Super Nintendo)">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="season.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+div.inline {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 20px 40px;
+}
+div.screenshots {
+	margin-left: 20px;
+}
+</style>
+<script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	//console.log("DOM Ready");
+	var download_button = document.getElementById("download");
+	download_button.onclick = download;
+});
+
+function download() {
+	
+	var utilityid = document.getElementById('utilityid').value;
+	var platform = document.getElementById('platform').value;
+	postStr = utilityid;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'download-utility.php', true);
+	xhr.setRequestHeader('Content-Type', 'text/plain');
+	xhr.send(postStr);
+	
+	xhr.onload = function() {
+		if (xhr.status === 200) {
+			var response = xhr.responseText;
+			//console.log(response);
+			if (response === "0") return; // Show error here, maybe
+			
+			var responseArray = response.split(',');
+			
+			var elementDownloads = document.getElementById('downloads');
+			elementDownloads.innerHTML = responseArray[1];
+			
+			var filepath = '/utilities/' + responseArray[0];
+			window.open(filepath, '_self');
+		}
+	};
+}
+
+</script>
+</head>
+
+<body>
+
+<h1><a href="https://retrohackers.net"><img src="https://retrohackers.net/retro-hackers-logo.png" alt="Retro Hackers Logo"></a><span class="user">Guest</span><span class="login"><a href="login.php">Log in</a></span><a href="login.php"><img src="user-blue-64.png" class="user"></a></h1><div class="asm"></div><img src="https://retrohackers.net/summer-tree.png" class="summertree" alt="Summer Tree"><!--<h1>
+<img src="retro-hackers-logo.png">
+<span class="user">Guest</span>
+<span class="login"><a href="">Log in</a></span>
+<img src="user-48.png" class="user">
+</h1>-->
+
+<div class="sections"><a href="https://retrohackers.net"><div class="section">News</div></a>
+<a href="hacks.php"><div class="section sel">Database</div></a>
+<a href="users.php"><div class="section">Users</div></a>
+<a href="projects.php"><div class="section">Projects</div></a>
+<a href="soon.php"><div class="section">Game Ports</div></a>
+<a href="soon.php"><div class="section">Videos</div></a>
+<a href="music.php"><div class="section">Music</div></a>
+<a href="soon.php"><div class="section">Material</div></a>
+<a href="feedback.php"><div class="section">Feedback</div></a>
+</div>
+<div class="img-title">
+<img src="/utilities/screenshots/200screenshot1.jpg" class="title">
+<button class="download" id="download">Download</button>
+</div>
+
+
+<div class="description inline">
+<p class="section-title">Hyrule Magic</p>
+<p class="infoitem">Game : The Legend of Zelda: A Link to the Past</p>
+<p class="infoitem">Platform : Super Nintendo</p>
+<p class="infoitem">Author : <a href="user-details.php?id=504">Sephiroth3</a></p>
+<p class="infoitem">Release date : 26 Jan 2006</p>
+<p class="infoitem">Category : Game Specific</p>
+<p class="infoitem">OS : Windows</p>
+<p class="infoitem">Skill Level : Beginner</p>
+<p class="infoitem">Version : 0.964</p>
+<p class="infoitem">Downloads : <span id="downloads">16676</span></p>
+<input class="invis" id="utilityid" value="200" disabled>
+<input class="invis" id="platform" value="9" disabled>
+<input class="invis" id="type" value="utility" disabled>
+</div>
+
+<div class="description">
+<p class="section-title">Utility description</p>
+An editor for The Legend of Zelda: A Link to the Past.</div>
+
+<!--<div class="screenshots">
+<p class="section-title">Screenshots</p>
+</div>
+
+<hr>-->
+
+<div class="description reviews">
+<p class="section-title">Reviews</p>
+<table class="results"><tr class="review-header"><td class="b">The best Zelda III editor</td><td>SunGodPortal</td><td>2016-01-29</td><td>Version 0.964</td></tr><tr><td colspan="4"><p><p>Hyrule Magic is a great program. It can edit just about anything in the game (except for some of the ending text which has to be edited via hex editor).</p>
+<p>It has an overworld editor, dungeon editor, title screen and menu editor, music editor, palette editor and even a "monologue" (!) editor for editing the dialogue.</p>
+<p>It can't edit graphics but you can copy graphics from the game into the clipboard, edit them in another program and them import them back into the game with Hyrule Magic. This is handy since the majority of the graphics are compressed and would otherwise need to be extracted/decompressed, edited and then reinserted/recompressed via the archaic, command-driven program known as Zcompress.</p>
+<p>Hyrule Magic is very easy to use and most of all, it's fun!</p>
+<p>Thank you, Sephiroth3!!!</p>
+<p>DISCLAIMER: Hyrule Magic not as wonderful as advertised. May have ill effects on your ROM and sanity. Romhacking.net is not responsible for any damages to your ROM or sanity caused by Hyrule Magic. Use at your own risk.</p></p></td></tr><tr class="separator"><td colspan="4"></td></tr><tr class="review-header"><td class="b">Nice Program</td><td>Dogeritos</td><td>2015-02-03</td><td>Version 0.962</td></tr><tr><td colspan="4"><p><p>This program is pretty good. I'd consider it user-friendly. All a beginner needs to do is either look up a tutorial on the internet, or the Help section of the program itself. I'd say it's definitely better than Black Magic... You can edit dungeons, the overworld, palettes, and on version .963, they make editing the other graphics easier (although YY-CHR is the way to go for your graphics editing). Sometimes, it'll do some funky glitches, but they hardly ever happen. All on all, it's a good program, for beginners, and intermediate Zelda 3 hackers.</p></p></td></tr><tr class="separator"><td colspan="4"></td></tr><tr class="review-header"><td class="b">Excellent! But neds s work</td><td>AppleDash98</td><td>2014-04-28</td><td>-</td></tr><tr><td colspan="4"><p><p>This is a very good editor for The Legend of Zelda: A Link to the Past. It contains all you need for a really good ROM mod for TLZ:LTP, except for a ROM expanding tool (so you can add even more sprites/objects, and the like in your mod).</p>
+<p>Some things that need worked on is: The GUI. Its kinda muddy, and could stand for a cleanup (I.E: Bigger editing window for things such as dungeons and the over world).</p>
+<p>That's all I've got :) I give it 4.5 stars out of a maximum of 5.</p></p></td></table></div>
+
+<hr><div class="footer">Copyright &copy; Retro Hackers<br>2024 - 2026</div>
+</body>
+</html>
